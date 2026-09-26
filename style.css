@@ -1,0 +1,30 @@
+﻿html { scrollbar-width: none; }
+
+body {
+	background-color: #070707;
+	color: #0033ff;
+	font-family: monospace;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	background-image: url('assets/bg.png');
+	background-repeat: repeat;
+}
+
+.sidebar {
+    width: 256px;
+    min-height: 100%;
+    border-right: 5px solid #0033ff;
+    padding: 8px 8px;
+    position: absolute;
+    overflow: auto;
+}
+
+.title {
+	font-size: 32px;
+	letter-spacing: 4px;
+	font-variant: small-caps;
+	line-height: 0.7;
+}
+
+.subtitle { margin-bottom: 24px; font-style: italic; }
