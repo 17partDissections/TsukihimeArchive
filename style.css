@@ -2,7 +2,7 @@
 
 body {
 	background-color: #070707;
-	color: #ff3300;
+	color: #0033ff;
 	font-family: monospace;
 	font-size: 12px;
 	margin: 0;
@@ -19,10 +19,11 @@ a:hover { text-decoration: underline; }
 .sidebar {
     width: 256px;
     min-height: 100%;
-    border-right: 5px solid #ff3300;
+    border-right: 5px solid #0033ff;
     padding: 16px 16px;
     position: absolute;
     overflow: auto;
+    box-sizing: border-box;
 }
 
 .title {
@@ -33,6 +34,42 @@ a:hover { text-decoration: underline; }
 }
 
 .subtitle { margin-bottom: 24px; font-style: italic; }
+
+.catalog { font-size: 14px; }
+.catalog-toggle {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	text-align: center;
+	cursor: pointer;
+	color: #0033ff;
+	font-size: 16px;
+	user-select: none;
+	vertical-align: middle;
+	transition: transform 0.15s;
+}
+.catalog-toggle::before {
+	content: ">";
+	display: inline-block;
+	transition: transform 0.15s;
+}
+.catalog-folder.expanded > .catalog-toggle::before { transform: rotate(90deg); }
+.catalog-toggle-placeholder {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	vertical-align: middle; 
+}
+.catalog-folder > a:hover { text-decoration: underline; }
+.catalog-folder > .catalog {
+	margin-left: 16px;
+	border-left: 1px dashed #0033ff;
+	padding-left: 6px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+.catalog-folder > .catalog.hidden { display: none; }
 
 iframe {
 	height: 100%;
