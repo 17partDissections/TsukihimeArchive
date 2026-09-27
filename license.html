@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<base href="/TsukihimeArchive/">
+	<meta charset="utf-8">
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=0.1">
+</head>
+<body class="page">
+	<h1>license</h1>
+	<h3><a href="LICENSE">download license file</a></h3>
+	<div id="content"></div>
+	<script>fetch('LICENSE').then(r => r.text()).then(t => document.getElementById('content').innerHTML = `<h2><pre>${t}</pre><h2>`);</script>
+</body>
+</html>
