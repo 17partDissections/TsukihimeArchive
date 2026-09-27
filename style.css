@@ -2,7 +2,7 @@
 
 body {
 	background-color: #070707;
-	color: #0033ff;
+	color: #ff3300;
 	font-family: monospace;
 	font-size: 12px;
 	margin: 0;
@@ -11,11 +11,16 @@ body {
 	background-repeat: repeat;
 }
 
+h1 { font-variant: small-caps; border-bottom: 1px dashed; }
+
+a { color: #0066cc; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
 .sidebar {
     width: 256px;
     min-height: 100%;
-    border-right: 5px solid #0033ff;
-    padding: 8px 8px;
+    border-right: 5px solid #ff3300;
+    padding: 16px 16px;
     position: absolute;
     overflow: auto;
 }
@@ -28,3 +33,19 @@ body {
 }
 
 .subtitle { margin-bottom: 24px; font-style: italic; }
+
+iframe {
+	height: 100%;
+	width: 100%;
+	border: none;
+}
+
+.main {
+    position: absolute;
+    height: 900px;
+    width: calc(100% - 293px);
+    margin-left: 293px;
+    box-sizing: border-box;
+}
+
+.page { padding: 24px; padding-right: 768px; }
