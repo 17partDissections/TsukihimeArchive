@@ -1,0 +1,15 @@
+{
+    "sidebar": {
+        "subtitle": "персоналальный архив ассетов серий tsukihime и melty blood от Andrew Q17pD",
+        "home": "главная",
+        "contacts": "контакты",
+        "catalog": "каталог",
+        "github": "посмотреть на Github",
+        "license": "лицензия",
+		"loading": "загрузка..."
+    },
+    "content": {
+        "home": "главная",
+        "license": "скачать файл лицензии"
+    }
+}

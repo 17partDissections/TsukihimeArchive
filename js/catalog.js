@@ -15,7 +15,7 @@ class CatalogGenerator {
         let html = '';
         if (!isNested) {
             html += '<div class="catalog" id="catalog">';
-            html += '<b>catalog</b>';
+            //html += '<b data-i18n="sidebar.catalog">sidebar.catalog</b>';
         } else {
             html += '<div class="catalog hidden">';
         }

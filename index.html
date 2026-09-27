@@ -16,30 +16,30 @@
 	
     <link href="style.css" rel="stylesheet" type="text/css">
 	<script src="js/catalog.js"></script>
+	<script src="js/i18n.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico?v=1">
 </head>
 <body>
 	<div class="sidebar">
 		<div class="title">Tsukihime Archive</div>
-		<div class="subtitle">Andrew Q17pD's personal tsukihime and melty blood series asset archive</div>
+		<div class="subtitle" data-i18n="sidebar.subtitle">sidebar.subtitle</div>
 		<div class="menu">
-			<a href="home.html" target="content">home</a>
-			<a href="contacts.html" target="content">contacts</a>
+			<a href="home.html" data-i18n="sidebar.home" target="content">sidebar.home</a>
+			<a href="contacts.html" data-i18n="sidebar.contacts" target="content">sidebar.contacts</a>
 		</div>
 		<br>
-		<div class="catalog" id="catalog">
-			<b>catalog</b><br><h2>loading...<h2>
-		</div>
+		<b data-i18n="sidebar.catalog">sidebar.catalog</b>
+		<div class="catalog" id="catalog"><br><h2 data-i18n="sidebar.loading">sidebar.loading</h2></div>
 	</div>
 	<div class="sidebar-footer">
         <select id="langSwitcher">
             <option value="en">english</option>
-            <option value="ru">russian</option>
+            <option value="ru">русский</option>
         </select>
 		<br><br>
 		<div class="menu">
-			<a href="license.html" target="content">license</a>
-			<a href="https://github.com/17partDissections/TsukihimeArchive" target="_blank">view on github</a>
+			<a data-i18n="sidebar.license" href="license.html" target="content">sidebar.license</a>
+			<a data-i18n="sidebar.github" href="https://github.com/17partDissections/TsukihimeArchive" target="_blank">sidebar.github</a>
 		</div>
     </div>
 	<div class="main"><iframe src="home.html" name="content"></iframe></div>

@@ -1,4 +1,14 @@
-﻿html { scrollbar-width: none; }
+﻿#langSwitcher {
+  background-color: #070707;
+  color: #0066cc;
+  font-family: monospace;
+  font-size: 12px;
+  border: 1px solid #0033ff;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+html { scrollbar-width: none; }
 
 body {
 	background-color: #070707;

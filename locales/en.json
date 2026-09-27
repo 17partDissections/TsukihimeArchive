@@ -1,0 +1,15 @@
+{
+    "sidebar": {
+        "subtitle": "Andrew Q17pD's personal tsukihime and melty blood series asset archive",
+        "home": "home",
+        "contacts": "contacts",
+        "catalog": "catalog",
+        "github": "view on GitHub",
+        "license": "license",
+		"loading": "loading..."
+    },
+    "content": {
+        "home": "home",
+        "license": "download license file"
+    }
+}
