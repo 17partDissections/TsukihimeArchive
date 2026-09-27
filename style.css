@@ -25,6 +25,11 @@ a:hover { text-decoration: underline; }
     overflow: auto;
     box-sizing: border-box;
 }
+.sidebar-footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 10px;
+}
 
 .title {
 	font-size: 32px;
@@ -88,7 +93,7 @@ iframe {
 
 .main {
     position: absolute;
-    height: 900px;
+    height: 950px;
     width: calc(100% - 293px);
     margin-left: 293px;
     box-sizing: border-box;
