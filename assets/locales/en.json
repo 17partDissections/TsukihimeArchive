@@ -1,5 +1,6 @@
 {
     "sidebar": {
+		"404": "404 - Page not found",
         "subtitle": "Andrew Q17pD's personal tsukihime and melty blood series asset archive",
         "home": "home",
         "contacts": "contacts",
@@ -9,6 +10,7 @@
 		"loading": "loading..."
     },
     "content": {
+		"404": "damn...",
         "home": "home",
         "license": "download license file"
     }

@@ -2,7 +2,7 @@ const translations = {};
 
 async function loadLocale(lang) {
   if (translations[lang]) return translations[lang];
-  const res = await fetch(`locales/${lang}.json`);
+  const res = await fetch(`assets/locales/${lang}.json`);
   if (!res.ok) return {};
   translations[lang] = await res.json();
   return translations[lang];

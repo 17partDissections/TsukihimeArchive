@@ -4,12 +4,13 @@
 <head>
 	<base href="/TsukihimeArchive/">
 	<meta charset="utf-8">
-	<link href="style.css" rel="stylesheet" type="text/css">
+	<link href="assets/style.css" rel="stylesheet" type="text/css">
+	<script src="assets/js/i18n.js" defer></script>
 	<meta name="viewport" content="width=device-width, initial-scale=0.1">
 </head>
 <body class="page">
-	<h1>license</h1>
-	<h3><a href="LICENSE">download license file</a></h3>
+	<h1 data-i18n="sidebar.license">sidebar.license</h1>
+	<h3><a  data-i18n="content.license" href="LICENSE">content.license</a></h3>
 	<div id="content"></div>
 	<script>fetch('LICENSE').then(r => r.text()).then(t => document.getElementById('content').innerHTML = `<h2><pre>${t}</pre><h2>`);</script>
 </body>
