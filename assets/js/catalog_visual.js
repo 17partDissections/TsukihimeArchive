@@ -102,6 +102,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         folderList.appendChild(card);
     }
 
+    const zipCard = document.createElement('a');
+    zipCard.className = 'folder-card';
+    zipCard.href = 'javascript:void(0)';
+    zipCard.title = 'to zip';
+    zipCard.onclick = async () => {
+        await downloadFolderAsZip(subfolderDir, fileName);
+    };
+    zipCard.innerHTML = `
+        <div class="folder-box">
+            <img src="assets/images/zip.png" alt="zip">
+        </div>
+        <div class="folder-name-box">to zip</div>
+    `;
+    folderList.appendChild(zipCard);
+
     const parentDir = currentDir.substring(0, currentDir.lastIndexOf('/'));
     const parentDirName = currentDir.substring(currentDir.lastIndexOf('/') + 1);
 
@@ -199,4 +214,54 @@ function parseDirectoryListing(html) {
         items.push({ name, type, href });
     });
     return items;
+}
+
+async function downloadFolderAsZip(folderPath, folderName) {
+    try {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+        script.onload = async () => {
+            const JSZip = window.JSZip;
+            const zip = new JSZip();
+            
+            await addFolderToZip(zip, folderPath, '');
+            
+            const blob = await zip.generateAsync({ type: 'blob' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `${folderName}.zip`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+        document.head.appendChild(script);
+    } catch (error) {
+        console.error('Error creating zip:', error);
+    }
+}
+
+async function addFolderToZip(zip, folderPath, zipPath) {
+    const contents = await getFolderContents(folderPath);
+    
+    for (const item of contents) {
+        const itemPath = `${folderPath}/${encodeURIComponent(item.name)}`;
+        const itemZipPath = zipPath ? `${zipPath}/${item.name}` : item.name;
+        
+        if (item.type === 'folder') {
+            await addFolderToZip(zip, itemPath, itemZipPath);
+        } else {
+            const lower = item.name.toLowerCase();
+            if (lower.endsWith('.html') || lower.endsWith('.htm')) {
+                continue;
+            }
+            
+            try {
+                const response = await fetch(itemPath);
+                const blob = await response.blob();
+                zip.file(itemZipPath, blob);
+            } catch (error) {
+                console.error(`Error fetching ${item.name}:`, error);
+            }
+        }
+    }
 }
