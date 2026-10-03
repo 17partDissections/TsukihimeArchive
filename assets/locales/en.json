@@ -12,6 +12,7 @@
     "content": {
 		"404": "damn...",
         "home": "home",
-        "license": "download license file"
+        "license": "download license file",
+		"back": "back"
     }
 }
