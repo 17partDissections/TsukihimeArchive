@@ -10,10 +10,93 @@
 </head>
 <body class="page">
 	<h1 data-i18n="sidebar.home">sidebar.home</h1>
+	<h3 data-i18n="content.home">content.home</h3>
+	
+	<div class="folder-list"></div>
 	<script>
-		if (window.parent && window.parent.collapseCatalog) {
-			window.parent.collapseCatalog();
+	if (window.parent && window.parent.collapseCatalog) {
+		window.parent.collapseCatalog();
+	}
+
+	document.addEventListener('DOMContentLoaded', async () => {
+		const folderList = document.querySelector('.folder-list');
+		const archivePath = '/TsukihimeArchive/archive';
+		const htmlFiles = await getHtmlFiles(archivePath);
+
+		htmlFiles.forEach(async (file) => {
+			const href = `archive/${file.name}.html`;
+			const imgSrc = `archive/${file.name}.png`;
+			const imgExists = await checkImageExists(imgSrc);
+			const finalImgSrc = imgExists ? imgSrc : 'assets/images/file.png';
+
+			const card = document.createElement('a');
+			card.className = 'folder-card';
+			card.href = href;
+			card.title = file.name;
+			card.innerHTML = `
+				<div class="folder-box">
+					<img src="${finalImgSrc}" 
+						 onerror="this.onerror=null; this.src='assets/images/file.png';" 
+						 alt="${file.name}">
+				</div>
+				<div class="folder-name-box">${file.name}</div>
+			`;
+			folderList.appendChild(card);
+		});
+	});
+
+	async function checkImageExists(url) {
+		try {
+			const response = await fetch(url, { method: 'HEAD' });
+			return response.ok;
+		} catch {
+			return false;
 		}
-	</script>
+	}
+
+	async function getHtmlFiles(folderPath) {
+		try {
+			const response = await fetch(`${folderPath}/`, {
+				method: 'GET',
+				headers: { 'Accept': 'text/html' }
+			});
+			if (!response.ok) return [];
+			const html = await response.text();
+			return parseHtmlFiles(html);
+		} catch {
+			return [];
+		}
+	}
+
+	function parseHtmlFiles(html) {
+		const parser = new DOMParser();
+		const doc = parser.parseFromString(html, 'text/html');
+		const links = doc.querySelectorAll('a[href]');
+		const items = [];
+
+		links.forEach(link => {
+			let href = link.getAttribute('href');
+			if (!href) return;
+
+			if (href.startsWith('?') || href.includes('?C=') || href.includes(';O=')) return;
+			if (href.includes('../') || href === '..' || href === './') return;
+
+			if (!href.toLowerCase().endsWith('.html')) return;
+
+			let name = href;
+			try {
+				name = decodeURIComponent(name);
+			} catch {
+			}
+
+			name = name.replace('.html', '').replace(/\/$/, '');
+			if (!name) return;
+
+			items.push({ name, href });
+		});
+
+		return items.sort((a, b) => a.name.localeCompare(b.name));
+	}
+</script>
 </body>
 </html>

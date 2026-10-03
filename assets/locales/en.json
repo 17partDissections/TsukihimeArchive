@@ -11,7 +11,7 @@
     },
     "content": {
 		"404": "damn...",
-        "home": "home",
+        "home": "Welcome to my personal archive of game assets from the Tsukihime universe.\nHere you can find sprites, backgrounds, music, and much more, that was found in the files of these games.\nI assembled this collection by decompiling the games, or finding assets from other sources.",
         "license": "download license file",
 		"back": "back"
     }

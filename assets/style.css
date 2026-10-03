@@ -22,6 +22,7 @@ body {
 }
 
 h1 { font-variant: small-caps; border-bottom: 1px dashed; }
+h3 { white-space: pre-wrap; word-wrap: break-word; }
 
 a { color: #0066cc; text-decoration: none; }
 a:hover { text-decoration: underline; }
